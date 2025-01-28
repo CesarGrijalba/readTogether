@@ -32,7 +32,9 @@ header ul li a{
     text-decoration: none;
 }
 
-body{
-    
+.agregarContainer{
+    display: flex;
+    border-color: 1px #676596;
+    color: #676596;
 }
 

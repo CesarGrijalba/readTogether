@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro</title>
+    <link rel="stylesheet" href="../css/styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Quicksand:wght@300..700&display=swap"
+      rel="stylesheet"
+    />
+</head>
+<body>
+
+    <div class="registroContainer">
+        <h1>readTogether</h1>
+        <h2>Registrate</h2>
+        <form id="registroForm">
+        <input type="text" name="nombre" id="nombre" placeholder="Nombre completo" required>
+          <input
+            type="email"
+            name="email"
+            id="email"
+            placeholder="Correo Electronico"
+            required
+          />
+          <input
+            type="password"
+            name="password"
+            id="contraseña"
+            placeholder="Contraseña"
+            required
+          />
+          
+          <input type="text" name="direccion" id="direccion" placeholder="Dirección">
+          <input type="number" name="telefono" id="telefono" placeholder="Teléfono">
+          <button type="submit">Registrarse</button>
+        </form>
+        <p>¿Ya tienes una cuenta? <a href="../index.html">Inicia sesión</a></p>
+      </div>
+
+      <script src="../js/registro.js"></script>
+    
+</body>
+</html>

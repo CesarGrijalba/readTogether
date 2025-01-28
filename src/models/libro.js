@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+import Usuario from './usuario.js';
 
 const LibroSchema = new mongoose.Schema({
     titulo: {
@@ -10,7 +11,8 @@ const LibroSchema = new mongoose.Schema({
         required: true
     },
     propietario: {
-        type: String,
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Usuario',
         required: true
     },
     fechaPublicacion: {
