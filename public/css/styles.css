@@ -1,0 +1,67 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #676596;
+  font-family: "Quicksand", serif;
+  line-height: 1.5;
+  color: #343341;
+}
+
+.loginContainer {
+  text-align: center;
+  width: 40%;
+  height: auto;
+  background-color: white;
+  border-radius: 1rem;
+  -webkit-box-shadow: 0px 0px 15px -3px rgba(255, 255, 255, 1);
+  -moz-box-shadow: 0px 0px 15px -3px rgba(255, 255, 255, 1);
+  box-shadow: 0px 0px 15px -3px rgba(255, 255, 255, 1);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+input {
+  font-family: "Quicksand", serif;
+  border: none;
+  border-bottom: 1px solid #676596;
+  width: 50%;
+  margin: 1rem;
+  font-size: medium;
+  text-align: center;
+}
+
+button {
+  font-family: "Quicksand", serif;
+  border: none;
+  background-color: #676596;
+  color: white;
+  padding: 0.6rem;
+  width: 50%;
+  margin: 1rem;
+  border-radius: 1rem;
+  cursor: pointer;
+  font-size: large;
+}
+button:hover {
+  background-color: #343341;
+}
+
+a {
+  color: #676596;
+}
+
+input:focus {
+  outline: none;
+}
+
+h1 {
+  color: #676596;
+}
