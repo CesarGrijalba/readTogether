@@ -71,7 +71,7 @@ function obtenerMisLibros() {
                 <h3>${libro.titulo}</h3>
                 <p>Autor: ${libro.autor}</p>
                 <p>Genero: ${libro.genero}</p>
-                <p>Fecha de publicación: ${libro.fechaPublicacion}</p>
+                <p>Fecha de publicación: ${libro.fechaPublicacion.split("T")[0]}</p>
             `;
         misLibrosContainer.appendChild(libroCard);
       });

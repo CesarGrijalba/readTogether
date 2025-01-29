@@ -10,9 +10,11 @@ function obtenerLibros() {
       libros.forEach((libro) => {
         const card = document.createElement("div");
         card.classList.add("card");
-        card.innerHTML = `<h2>${libro.titulo}</h2>
-            <p>${libro.autor}</p>
-            <p>${libro.genero}</p>`;
+        card.innerHTML = `
+                <h3>${libro.titulo}</h3>
+                <p>Autor: ${libro.autor}</p>
+                <p>Genero: ${libro.genero}</p>
+                <p>Fecha de publicación: ${libro.fechaPublicacion.split("T")[0]}</p>`;
         librosContainer.appendChild(card);
       });
     });
