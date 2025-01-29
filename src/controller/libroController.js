@@ -12,10 +12,27 @@ export const obtenerLibros = async (req, res) => {
   }
 };
 
+export const obtenerLibrosUser = async (req, res) => {
+  try {
+    const userId = req.userId;
+    const libros = await Libro.find({ propietario: userId });
+    res.status(200).json(libros);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
 export const crearLibro = async (req, res) => {
   try {
-    const libro = req.body;
-    const newLibro = new Libro(libro);
+    const { titulo, autor, fechaPublicacion, genero } = req.body;
+    const usuarioId = req.userId;
+    const newLibro = new Libro({
+      titulo,
+      autor,
+      propietario: usuarioId,
+      fechaPublicacion,
+      genero,
+    });
     await newLibro.save();
     res.status(201).json(newLibro);
   } catch (error) {
@@ -25,7 +42,11 @@ export const crearLibro = async (req, res) => {
 
 export const actualizarLibro = async (req, res) => {
   try {
-    const updatedLibro = await Libro.findByIdAndUpdate(req.params.id, req.body, { new: true });
+    const updatedLibro = await Libro.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      { new: true }
+    );
     res.status(200).json(updatedLibro);
   } catch (error) {
     res.status(500).json({ message: error.message });

@@ -1,5 +1,4 @@
 import mongoose from 'mongoose';
-import Usuario from './usuario.js';
 
 const LibroSchema = new mongoose.Schema({
     titulo: {
@@ -28,7 +27,8 @@ const LibroSchema = new mongoose.Schema({
         default: true
     },
     prestatario: {
-        type: String,
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Usuario',
         default: null
     },
     fechaPrestamo: {
@@ -38,6 +38,10 @@ const LibroSchema = new mongoose.Schema({
     fechaDevolucion: {
         type: Date,
         default: null
+    },
+    imagen: {
+        type: String,
+        default: 'default.jpg'
     }
 });
 

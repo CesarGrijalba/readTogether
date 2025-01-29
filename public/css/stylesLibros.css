@@ -1,40 +1,142 @@
-*{
-    margin: 0;
-    font-family: "Quicksand", serif;
+* {
+  margin: 0;
+  font-family: "Quicksand", serif;
 }
 
-
-header{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1rem;
-    background-color: #676596;
-    color: white;
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  /* z-index: 1000; */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 0 1rem 0;
+  background-color: #676596;
+  color: white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-header h1{
-    font-size: x-large;
+header h1 {
+  font-size: x-large;
 }
 
-header ul{
-    color: white;
-    display: flex;
+header ul {
+  color: white;
+  display: flex;
 }
-header ul li{
-    font-size: large;
-    list-style: none;
-    margin: 0 2rem;
-}
-
-header ul li a{
-    color: white;
-    text-decoration: none;
+header ul li {
+  font-size: large;
+  list-style: none;
+  margin: 0 2rem;
 }
 
-.agregarContainer{
-    display: flex;
-    border-color: 1px #676596;
-    color: #676596;
+header ul li a {
+  color: white;
+  text-decoration: none;
 }
 
+.agregarContainer {
+  position: sticky;
+  top: 80px; /* Ajusta para que no se solape con el header */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
+  padding: 1rem;
+  width: 25%;
+  height: 100%;
+  border-radius: 1rem;
+  background-color: #67659649;
+  -webkit-box-shadow: 0px 0px 10px 6px rgba(103, 101, 150, 0.36);
+  -moz-box-shadow: 0px 0px 10px 6px rgba(103, 101, 150, 0.36);
+  box-shadow: 0px 0px 10px 6px rgba(103, 101, 150, 0.36);
+}
+
+.agregarContainer h2 {
+  color: #676596;
+  margin-bottom: 2rem;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+button {
+  font-family: "Quicksand", serif;
+  border: none;
+  background-color: #676596;
+  color: white;
+  padding: 0.6rem;
+  width: 50%;
+  margin: 1rem;
+  border-radius: 1rem;
+  cursor: pointer;
+  font-size: large;
+}
+button:hover {
+  background-color: #343341;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+input {
+  background-color: transparent;
+  font-family: "Quicksand", serif;
+  border: none;
+  border-bottom: 1px solid #676596;
+  width: 50%;
+  margin: 1rem;
+  font-size: medium;
+  text-align: center;
+}
+input:focus {
+  outline: none;
+}
+
+.misLibrosContainer {
+  width: 65%;
+  height: 50%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-content: flex-start;
+}
+
+.misLibrosContainer div {
+  margin-top: 1rem;
+  width: 290px;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 1rem;
+  background-color: #67659649;
+}
+
+.misLibrosContainer div h3 {
+  color: #676596;
+}
+
+main {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+body {
+  padding-top: 70px; /* Ajusta según el alto del header */
+}

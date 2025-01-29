@@ -15,10 +15,15 @@ document.getElementById("loginForm").addEventListener("submit", async (e) => {
     });
 
     const data = await response.json();
+    console.log(data);
 
     if (response.ok) {
-      localStorage.setItem("usuario", JSON.stringify(data));
-      window.location.href = "./html/libros.html";
+      localStorage.setItem("token", data.token);
+      const tokenPayload = JSON.parse(atob(data.token.split(".")[1])); // Decodificar token
+      localStorage.setItem("usuarioEmail", tokenPayload.email);
+      console.log("Respuesta correcta:", data);
+      window.location.href = "./html/explorar.html";
+      
     } else {
       alert(data.message);
     }

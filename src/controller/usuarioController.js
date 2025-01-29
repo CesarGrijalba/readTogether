@@ -12,7 +12,7 @@ export const registro = async (req, res) => {
     const newUsuario = new Usuario(usuario);
     await newUsuario.save();
 
-    const token = jwt.sign({ id: newUsuario._id }, process.env.JWT_SECRET, {
+    const token = jwt.sign({ userId: newUsuario._id }, process.env.JWT_SECRET, {
       expiresIn: "1h",
     }); // genera un token JWT con el id del usuario y lo expira en 1 hora
     res.status(201).json({ message: "Usuario creado", token });
@@ -36,11 +36,14 @@ export const login = async (req, res) => {
     if (!match)
       return res.status(401).json({ message: "Credenciales incorrectas" }); // Si las contraseñas no coinciden, devuelve un error
 
-    const token = jwt.sign({ id: usuario._id }, process.env.JWT_SECRET, {
-      expiresIn: "1h",
-    }); // genera un token JWT con el id del usuario y lo expira en 1 hora
+    const token = jwt.sign({
+                              userId: usuario._id, 
+                              email: usuario.email },
+                              process.env.JWT_SECRET, {expiresIn: "1h",}); // genera un token JWT con el id del usuario y lo expira en 1 hora
 
     res.status(200).json({ message: "Usuario logueado", token });
+
+    console.log("Usuario logueado: ", token);
   } catch (error) {
     res
       .status(500)
@@ -55,4 +58,4 @@ export const obtenerUsuarios = async (req, res) => {
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
-}
+};
