@@ -23,6 +23,19 @@ export const obtenerSolicitudes = async (req, res) => {
   }
 };
 
+export const actualizarSolicitud = async (req, res) =>{
+  try {
+    const updatedSolicitud = await Prestamo.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      { new: true }
+    );
+    res.status(200).json(updatedSolicitud);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+}
+
 export const obtenerTodos = async (req, res) => {
   try {
     const userId = req.userId;

@@ -97,3 +97,16 @@
   body {
     padding-top: 70px; /* Ajusta según el alto del header */
   }
+
+  #botonesContainer {
+    width: 100%;
+    height: fit-content;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+    background-color: transparent;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+  }

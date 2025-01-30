@@ -41,9 +41,33 @@ async function obtenerSolicitudes() {
             solicitud.fechaSolicitud.split("T")[0]
           }</p>
           <p><strong>Estado</strong>: ${solicitud.estado}</p>
+          <div>
+</div>
   
         `;
-      solicitudesContainer.appendChild(libroCard);
+      
+
+      const aceptarBtn = document.createElement("button");
+        aceptarBtn.textContent = "Aceptar";
+        aceptarBtn.addEventListener("click", () => {
+            aceptarSolicitud(solicitud._id);
+        //   eliminarLibro(libro._id);
+        });
+
+        const denegarBtn = document.createElement("button");
+        denegarBtn.textContent = "Rechazar";
+        denegarBtn.addEventListener("click", () => {
+            // abrirModalEdicion(libro)
+        } );
+
+        const divBotones = libroCard.querySelector("div");
+        divBotones.id = "botonesContainer";
+
+
+        divBotones.appendChild(aceptarBtn);
+        divBotones.appendChild(denegarBtn);
+
+        solicitudesContainer.appendChild(libroCard);
     }
   } catch (error) {
     console.error("Error al obtener los préstamos:", error);
@@ -82,6 +106,22 @@ function obtenerLibro(id) {
       console.error("Error al obtener el libro:", error);
       throw error; // Relanza el error para que pueda ser manejado por quien llame a la función
     });
+}
+
+function aceptarSolicitud(id){
+    try {
+        fetch(`${urlSolicitudes}/${id}`, {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ estado: "Aprobado" }),
+        });
+        alert("Solicitud aceptada correctamente");
+        obtenerSolicitudes();
+      } catch (error) {
+        console.error("Error:", error);
+      }
 }
 
 obtenerSolicitudes();
