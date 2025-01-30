@@ -11,7 +11,7 @@ header {
   /* z-index: 1000; */
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
   padding: 1rem 0 1rem 0;
   background-color: #676596;
   color: white;
@@ -61,10 +61,10 @@ header ul li a {
 }
 
 form {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
   width: 100%;
 }
 
@@ -118,10 +118,37 @@ input:focus {
   align-items: center;
   border-radius: 1rem;
   background-color: #67659649;
+  -webkit-box-shadow: 0px 0px 9px 0px rgba(103, 101, 150, 0.56);
+  -moz-box-shadow: 0px 0px 9px 0px rgba(103, 101, 150, 0.56);
+  box-shadow: 0px 0px 9px 0px rgba(103, 101, 150, 0.56);
+}
+
+.misLibrosContainer div:hover {
+  -webkit-box-shadow: 0px 0px 16px 3px rgba(103, 101, 150, 0.56);
+  -moz-box-shadow: 0px 0px 16px 3px rgba(103, 101, 150, 0.56);
+  box-shadow: 0px 0px 16px 3px rgba(103, 101, 150, 0.56);
 }
 
 .misLibrosContainer div h3 {
   color: #676596;
+}
+
+.misLibrosContainer img {
+  width: 30%;
+  height: auto;
+}
+
+#saludo{
+  text-align: center;
+  color: #676596;
+  padding-top: 1rem;
+}
+
+.subtitulos{
+  text-align: center;
+  color: #676596;
+  padding-top: 1rem;
+
 }
 
 main {
@@ -135,37 +162,120 @@ body {
 }
 
 @media (max-width: 600px) {
-
 }
 @media (max-height: 600px) {
-    form{
-        gap: 1rem;
-    }
+  form {
+    gap: 1rem;
+  }
 }
 
 /* Estilos para sección de explorar libros */
 .librosContainer {
-    width: 100%;
-    height: 50%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-content: flex-start;
-  }
-  
-  .librosContainer div {
-    margin-top: 1rem;
-    /* padding: 1rem; */
-    width: 290px;
-    height: 300px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    border-radius: 1rem;
-    background-color: #67659649;
-  }
+  width: 90%;
+  height: 50%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-content: flex-start;
+}
 
-  .librosContainer div h3 {
-    color: #676596;
-  }
+.librosContainer div {
+  margin-top: 1rem;
+  /* padding: 1rem; */
+  width: 290px;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 1rem;
+  background-color: #67659649;
+  /* -webkit-box-shadow: 0px 0px 9px 0px rgba(103, 101, 150, 0.56);
+  -moz-box-shadow: 0px 0px 9px 0px rgba(103, 101, 150, 0.56);
+  box-shadow: 0px 0px 9px 0px rgba(103, 101, 150, 0.56); */
+}
+
+.librosContainer div:hover {
+  -webkit-box-shadow: 0px 0px 16px 3px rgba(103, 101, 150, 0.56);
+  -moz-box-shadow: 0px 0px 16px 3px rgba(103, 101, 150, 0.56);
+  box-shadow: 0px 0px 16px 3px rgba(103, 101, 150, 0.56);
+}
+
+.librosContainer div h3 {
+  color: #676596;
+}
+
+.librosContainer img {
+  width: 30%;
+  height: auto;
+}
+
+#botonesContainer {
+  width: 100%;
+  height: fit-content;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+/* Estilos modal para edicion */
+
+.modal {
+  display: none; /* Oculta la ventana por defecto */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(105, 78, 131, 0.531); /* Fondo semitransparente */
+  justify-content: center;
+  align-items: center;
+  color: #676596;
+}
+
+.contenido-modal {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 400px;
+  box-shadow: 0 4px 8px rgba(115, 73, 139, 0.815);
+  text-align: center;
+}
+
+.contenido-modal input,
+.contenido-modal button {
+  font-family: "Quicksand", serif;
+  color: #343341;
+  margin: 10px 0;
+  width: 90%;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.cerrar {
+  position: fixed;
+  color: red;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#btn-modal {
+  font-family: "Quicksand", serif;
+  font-size: large;
+  height: 3rem;
+  border: none;
+  border-radius: 1rem;
+  background-color: #676596;
+  color: white;
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+#btn-modal:hover {
+  background-color: #0479b0;
+}

@@ -19,6 +19,8 @@ document.getElementById("loginForm").addEventListener("submit", async (e) => {
 
     if (response.ok) {
       localStorage.setItem("token", data.token);
+      localStorage.setItem('user', JSON.stringify(data.nombre));
+      
       const tokenPayload = JSON.parse(atob(data.token.split(".")[1])); // Decodificar token
       localStorage.setItem("usuarioEmail", tokenPayload.email);
       console.log("Respuesta correcta:", data);

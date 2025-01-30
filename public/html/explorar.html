@@ -17,19 +17,30 @@
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=more_vert"
     />
   </head>
-  <header>
-    <h1>readTogether</h1>
-    <nav>
-      <ul>
-        <li><a href="../explorar.html">Explorar</a></li>
-        <li><a href="../html/misLibros.html">Mis libros</a></li>
-        <li><a href="">Solicitudes</a></li>
-      </ul>
-    </nav>
-    <span class="material-symbols-outlined"> more_vert </span>
-  </header>
+
   <body>
-    <script src="../js/explorar.js"></script>
-    <div class="librosContainer" id="librosContainer"></div>
+    <header>
+      <h1>readTogether</h1>
+      <nav>
+        <ul>
+          <li><a href="./explorar.html">Explorar</a></li>
+          <li><a href="../html/misLibros.html">Mis libros</a></li>
+          <li><a href="./misPrestamos.html">Mis prestamos</a></li>
+          <li><a href="">Solicitudes</a></li>
+
+        </ul>
+      </nav>
+      <div class="menu-container" id="menu-container"></div>
+    </header>
+
+    <!-- Menu de opciones -->
+    <script src="../js/menu.js"> </script>
+
+  <script src="../js/explorar.js"></script>
+  <h2 id="saludo"></h2>
+    <main>
+      <div class="librosContainer" id="librosContainer"></div>
+    </main>
+    
   </body>
 </html>

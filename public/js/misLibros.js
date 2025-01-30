@@ -3,6 +3,14 @@ const urlMisLibros = "http://localhost:3000/libros/misLibros";
 
 const token = localStorage.getItem("token");
 
+//Elementos del modal
+const modal = document.getElementById("modal");
+const tituloEditar = modal.querySelector("#titulo");
+const autorEditar = modal.querySelector("#autor");
+const fechaPublicacionEditar = modal.querySelector("#fechaPublicacion");
+const generoEditar = modal.querySelector("#genero");
+const botonEditar = modal.querySelector("button");
+
 document.getElementById("agregarForm").addEventListener("submit", async (e) => {
   e.preventDefault();
 
@@ -54,7 +62,6 @@ document.getElementById("agregarForm").addEventListener("submit", async (e) => {
 });
 
 function obtenerMisLibros() {
-  const misLibrosContainer = document.getElementById("misLibrosContainer");
   fetch(urlMisLibros, {
     method: "GET",
     headers: {
@@ -69,13 +76,105 @@ function obtenerMisLibros() {
         const libroCard = document.createElement("div");
         libroCard.innerHTML = `
                 <h3>${libro.titulo}</h3>
+                <img src="../img/libro.png" alt="">
                 <p>Autor: ${libro.autor}</p>
                 <p>Genero: ${libro.genero}</p>
-                <p>Fecha de publicación: ${libro.fechaPublicacion.split("T")[0]}</p>
+                <p>Fecha de publicación: ${
+                  libro.fechaPublicacion.split("T")[0]
+                }</p>
+                <div>
+</div>
             `;
+        const eliminarBtn = document.createElement("button");
+        eliminarBtn.textContent = "Eliminar";
+        eliminarBtn.addEventListener("click", () => {
+          eliminarLibro(libro._id);
+        });
+
+        const editarBtn = document.createElement("button");
+        editarBtn.textContent = "Editar";
+        editarBtn.addEventListener("click", () => {
+          modal.style.display = "flex";
+          tituloEditar.value = libro.titulo;
+          autorEditar.value = libro.autor;
+          fechaPublicacionEditar.value = libro.fechaPublicacion.split("T")[0];
+          generoEditar.value = libro.genero;
+
+          abrirModal();
+        });
+
+        //Eviar datos nuevos para actualizar
+        botonEditar.addEventListener("click", () => {
+          const tituloNuevo = tituloEditar.value;
+          const autorNuevo = autorEditar.value;
+          const fechaPublicacionNuevo = fechaPublicacionEditar.value;
+          const generoNuevo = generoEditar.value;
+
+          actualizarLibro(
+            libro._id,
+            tituloNuevo,
+            autorNuevo,
+            fechaPublicacionNuevo,
+            generoNuevo
+          );
+          modal.style.display = "none";
+
+        });
+
+        const divBotones = libroCard.querySelector("div");
+        divBotones.id = "botonesContainer";
+
+        divBotones.appendChild(editarBtn);
+        divBotones.appendChild(eliminarBtn);
+
         misLibrosContainer.appendChild(libroCard);
       });
     });
 }
+
+// Funcion para eliminar libro
+async function eliminarLibro(id) {
+  if (confirm("Estas seguro que deseas eliminar este libro?")) {
+    try {
+      const response = await fetch(`${url}/${id}`, {
+        method: "DELETE",
+      });
+      try {
+        obtenerMisLibros();
+        console.log("Libro eliminado correctamente");
+      } catch (error) {
+        console.error("Error al eliminar la tarea");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  }
+}
+
+//Funcion para actualizar libro
+async function actualizarLibro(id, titulo, autor, fechaPublicacion, genero) {
+  try {
+    const response = await fetch(`${url}/${id}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ titulo, autor, fechaPublicacion, genero }),
+    });
+    try {
+      obtenerMisLibros();
+      alert("Libro modificado con exito");
+    } catch (error) {
+      console.error("Error al actualizar el libro");
+    }
+  } catch (error) {
+    console.error("Error:", error);
+  }
+}
+
+// Evento para cerrar el modal
+modal.addEventListener("click", (event) => {
+  if (event.target === modal) {
+    modal.style.display = "none";
+  }
+});
 
 obtenerMisLibros();

@@ -4,6 +4,7 @@ import mongoose from "mongoose";
 import cors from "cors";
 import libroRoutes from "./routes/libroRoutes.js";
 import usuarioRoutes from "./routes/usuarioRoutes.js";
+import prestamoRoutes from "./routes/prestamoRoutes.js"
 
 dotenv.config();
 
@@ -33,6 +34,7 @@ mongoose
 
 app.use("/libros", libroRoutes);
 app.use("/usuarios", usuarioRoutes);
+app.use("/prestamos", prestamoRoutes);
 
 app.listen(PORT, () => {
   console.log(`Servidor corriendo en el puerto ${PORT}`);

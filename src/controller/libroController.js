@@ -22,6 +22,16 @@ export const obtenerLibrosUser = async (req, res) => {
   }
 };
 
+export const obtenerLibrosExplorar = async (req, res) => {
+  try {
+    const userId = req.userId;
+    const libros = await Libro.find({ propietario: {$ne: userId} });
+    res.status(200).json(libros);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
 export const crearLibro = async (req, res) => {
   try {
     const { titulo, autor, fechaPublicacion, genero } = req.body;

@@ -1,0 +1,48 @@
+<!-- menu.html -->
+<div class="menu-container">
+    <button id="menu-button">⋮</button>
+    <div id="menu-options" class="hidden">
+        <a href="">Perfil</a>
+        <a id="logout">Cerrar sesión</a>
+    </div>
+</div>
+
+<style>
+    .menu-container {
+        position: relative;
+        display: inline-block;
+    }
+    #menu-button {
+        font-size: 30px;
+        margin: 0;
+        padding: 0;
+        background: none;
+        border: none;
+        cursor: pointer;
+    }
+    #menu-options {
+        display: none;
+        position: absolute;
+        right: 0;
+        background: white;
+        border: 1px solid #ccc;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+        min-width: 120px;
+    }
+    #menu-options a {
+        display: block;
+        padding: 8px;
+        text-decoration: none;
+        color: black;
+    }
+    #menu-options a:hover {
+        cursor: pointer;
+        background-color: #f0f0f0;
+    }
+    .show {
+        display: block !important;
+    }
+</style>
+
+<script src="../js/menu.js"></script>

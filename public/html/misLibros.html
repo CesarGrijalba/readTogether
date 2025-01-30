@@ -25,14 +25,19 @@
         <ul>
           <li><a href="./explorar.html">Explorar</a></li>
           <li><a href="./misLibros.html">Mis libros</a></li>
+          <li><a href="./misPrestamos.html">Mis prestamos</a></li>
           <li><a href="">Solicitudes</a></li>
         </ul>
       </nav>
-      <span class="material-symbols-outlined"> more_vert </span>
+      <div class="menu-container" id="menu-container"></div>
     </header>
+
+    <!-- Script para funcionamiento del menu toggle -->
+    <script src="../js/menu.js"></script>
+    <!-- ------------------------------------------------------------- -->
+
     <main>
       <div class="agregarContainer">
-        
         <form id="agregarForm">
           <h2>Agregar libro</h2>
           Título del libro
@@ -47,15 +52,54 @@
             placeholder="Fecha de publicación"
           />
           Género
-          <input type="text" name="genero" id="genero" placeholder="" />
+          <input type="text" name="genero" id="genero" placeholder="" list="listaGeneros"/>
+          <datalist id="listaGeneros">
+            <option value="Thriller"></option>
+            <option value="Historia"></option>
+            <option value="Romance"></option>
+            <option value="Ciencia ficción"></option>
+            <option value="Distopía"></option>
+            <option value="Aventura"></option>
+            <option value="Fantasía"></option>
+            <option value="Terror"></option>
+            <option value="Infantil"></option>
+            <option value="Cocina"></option>
+          </datalist>
+
           <button type="submit">Agregar</button>
         </form>
       </div>
-
-      <div class="misLibrosContainer" id="misLibrosContainer">
-      </div>
+      <div class="misLibrosContainer" id="misLibrosContainer"></div>
     </main>
 
+    <!-- Ventana emergente -->
+    <div class="modal" id="modal">
+      <div class="contenido-modal">
+        <h2>Editar libro</h2>
+        Título
+        <input type="text" id="titulo" placeholder="" required />
+        Autor
+        <input type="text" id="autor" placeholder="" required />
+        Fecha de publicación
+        <input type="date" id="fechaPublicacion" placeholder="" required />
+        Género
+        <input type="text" id="genero" placeholder="" list="listaGenerosEditar" required />
+        <datalist id="listaGenerosEditar">
+          <option value="Thriller"></option>
+          <option value="Historia"></option>
+          <option value="Romance"></option>
+          <option value="Ciencia ficción"></option>
+          <option value="Distopía"></option>
+          <option value="Aventura"></option>
+          <option value="Fantasía"></option>
+          <option value="Terror"></option>
+          <option value="Infantil"></option>
+          <option value="Cocina"></option>
+        </datalist>
+
+        <button id="btn-modal">Editar</button>
+      </div>
+    </div>
     <script src="../js/misLibros.js"></script>
   </body>
 </html>
