@@ -1,7 +1,7 @@
-const urlPrestamos = "http://localhost:3000/prestamos";
-const urlSolicitudes = "http://localhost:3000/prestamos/solicitudes";
-const urlUsuarios = "http://localhost:3000/usuarios";
-const urlLibros = "http://localhost:3000/libros";
+const urlPrestamos = "https://read-together-pi.vercel.app/prestamos";
+const urlSolicitudes = "https://read-together-pi.vercel.app/prestamos/solicitudes";
+const urlUsuarios = "https://read-together-pi.vercel.app/usuarios";
+const urlLibros = "https://read-together-pi.vercel.app/libros";
 
 const token = localStorage.getItem("token");
 
@@ -50,13 +50,14 @@ async function obtenerSolicitudes() {
       const aceptarBtn = document.createElement("button");
         aceptarBtn.textContent = "Aceptar";
         aceptarBtn.addEventListener("click", () => {
-            aceptarSolicitud(solicitud._id);
+            aprobarSolicitud(solicitud._id);
         //   eliminarLibro(libro._id);
         });
 
         const denegarBtn = document.createElement("button");
         denegarBtn.textContent = "Rechazar";
         denegarBtn.addEventListener("click", () => {
+          rechazarSolicitud(solicitud._id)
             // abrirModalEdicion(libro)
         } );
 
@@ -108,7 +109,7 @@ function obtenerLibro(id) {
     });
 }
 
-function aceptarSolicitud(id){
+function aprobarSolicitud(id){
     try {
         fetch(`${urlSolicitudes}/${id}`, {
           method: "PUT",
@@ -122,6 +123,22 @@ function aceptarSolicitud(id){
       } catch (error) {
         console.error("Error:", error);
       }
+}
+
+function rechazarSolicitud(id){
+  try {
+      fetch(`${urlSolicitudes}/${id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ estado: "Rechazado" }),
+      });
+      alert("Solicitud rechazada correctamente");
+      obtenerSolicitudes();
+    } catch (error) {
+      console.error("Error:", error);
+    }
 }
 
 obtenerSolicitudes();
