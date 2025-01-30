@@ -12,6 +12,17 @@ export const obtenerPrestamos = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
+
+export const obtenerSolicitudes = async (req, res) => {
+  try {
+    const userId = req.userId;
+    const solicitudes = await Prestamo.find({ propietario: userId });
+    res.status(200).json(solicitudes);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
 export const obtenerTodos = async (req, res) => {
   try {
     const userId = req.userId;

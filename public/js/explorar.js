@@ -60,7 +60,7 @@ async function obtenerLibros() {
     // Capitalizar la primera letra del nombre
     const nombreCapitalizado = usuario.split(" ")[0];
     
-    saludo.textContent = `Hola, ${nombreCapitalizado}`;
+    saludo.textContent = `Hola, ${nombreCapitalizado}  👋`;
 
     // Obtén el contenedor de libros y limpia su contenido
     const librosContainer = document.getElementById("librosContainer");
@@ -78,10 +78,10 @@ async function obtenerLibros() {
         card.innerHTML = `
           <h3>${libro.titulo}</h3>
           <img src="../img/libro.png" alt="">
-          <p>Autor: ${libro.autor}</p>
-          <p>Género: ${libro.genero}</p>
-          <p>Fecha de publicación: ${libro.fechaPublicacion.split("T")[0]}</p>
-          <p>Propietario: ${propietarioData.nombre}</p>
+          <p><strong>Autor:</strong> ${libro.autor}</p>
+          <p><strong>Género:</strong> ${libro.genero}</p>
+          <p><strong>Fecha de publicación:</strong> ${libro.fechaPublicacion.split("T")[0]}</p>
+          <p><strong>Propietario:</strong> ${propietarioData.nombre}</p>
         `;
         const solicitarBtn = document.createElement("button");
         solicitarBtn.textContent = "Solicitar";

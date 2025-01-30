@@ -11,6 +11,32 @@ const fechaPublicacionEditar = modal.querySelector("#fechaPublicacion");
 const generoEditar = modal.querySelector("#genero");
 const botonEditar = modal.querySelector("button");
 
+let libroEditadoId = null;
+
+botonEditar.addEventListener("click", () => {
+  const tituloNuevo = tituloEditar.value;
+  const autorNuevo = autorEditar.value;
+  const fechaPublicacionNuevo = fechaPublicacionEditar.value;
+  const generoNuevo = generoEditar.value;
+
+  if (libroEditadoId) {
+    actualizarLibro(libroEditadoId, tituloNuevo, autorNuevo, fechaPublicacionNuevo, generoNuevo);
+    modal.style.display = "none";
+  }
+});
+
+// Función para abrir el modal de edición
+function abrirModalEdicion(libro) {
+  modal.style.display = "flex";
+  tituloEditar.value = libro.titulo;
+  autorEditar.value = libro.autor;
+  fechaPublicacionEditar.value = libro.fechaPublicacion.split("T")[0];
+  generoEditar.value = libro.genero;
+
+  // Guardar el ID del libro que se está editando
+  libroEditadoId = libro._id;
+}
+
 document.getElementById("agregarForm").addEventListener("submit", async (e) => {
   e.preventDefault();
 
@@ -77,9 +103,9 @@ function obtenerMisLibros() {
         libroCard.innerHTML = `
                 <h3>${libro.titulo}</h3>
                 <img src="../img/libro.png" alt="">
-                <p>Autor: ${libro.autor}</p>
-                <p>Genero: ${libro.genero}</p>
-                <p>Fecha de publicación: ${
+                <p><strong>Autor:</strong> ${libro.autor}</p>
+                <p><strong>Genero:</strong> ${libro.genero}</p>
+                <p><strong>Fecha de publicación:</strong> ${
                   libro.fechaPublicacion.split("T")[0]
                 }</p>
                 <div>
@@ -93,33 +119,26 @@ function obtenerMisLibros() {
 
         const editarBtn = document.createElement("button");
         editarBtn.textContent = "Editar";
-        editarBtn.addEventListener("click", () => {
-          modal.style.display = "flex";
-          tituloEditar.value = libro.titulo;
-          autorEditar.value = libro.autor;
-          fechaPublicacionEditar.value = libro.fechaPublicacion.split("T")[0];
-          generoEditar.value = libro.genero;
-
-          abrirModal();
-        });
+        editarBtn.addEventListener("click", () => abrirModalEdicion(libro));
 
         //Eviar datos nuevos para actualizar
-        botonEditar.addEventListener("click", () => {
-          const tituloNuevo = tituloEditar.value;
-          const autorNuevo = autorEditar.value;
-          const fechaPublicacionNuevo = fechaPublicacionEditar.value;
-          const generoNuevo = generoEditar.value;
+        // botonEditar.addEventListener("click", () => {
+        //   console.log("ENTRADA")
+    
+        //   const tituloNuevo = tituloEditar.value;
+        //   const autorNuevo = autorEditar.value;
+        //   const fechaPublicacionNuevo = fechaPublicacionEditar.value;
+        //   const generoNuevo = generoEditar.value;
 
-          actualizarLibro(
-            libro._id,
-            tituloNuevo,
-            autorNuevo,
-            fechaPublicacionNuevo,
-            generoNuevo
-          );
-          modal.style.display = "none";
-
-        });
+        //   actualizarLibro(
+        //     libro._id,
+        //     tituloNuevo,
+        //     autorNuevo,
+        //     fechaPublicacionNuevo,
+        //     generoNuevo
+        //   );
+        //   modal.style.display = "none";
+        // });
 
         const divBotones = libroCard.querySelector("div");
         divBotones.id = "botonesContainer";

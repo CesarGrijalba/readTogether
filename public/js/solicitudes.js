@@ -1,51 +1,54 @@
 const urlPrestamos = "http://localhost:3000/prestamos";
+const urlSolicitudes = "http://localhost:3000/prestamos/solicitudes";
 const urlUsuarios = "http://localhost:3000/usuarios";
 const urlLibros = "http://localhost:3000/libros";
 
-
 const token = localStorage.getItem("token");
 
-
-async function obtenerMisPrestamos() {
+async function obtenerSolicitudes() {
   try {
-    const response = await fetch(urlPrestamos, {
+    const response = await fetch(urlSolicitudes, {
       method: "GET",
       headers: {
         Authorization: `Bearer ${token}`,
       },
     });
 
-    const prestamos = await response.json();
-    console.log(prestamos);
+    const solicitudes = await response.json();
+    console.log(solicitudes);
 
-    const misPrestamosContainer = document.getElementById("misPrestamosContainer");
-    misPrestamosContainer.innerHTML = "";
+    const solicitudesContainer = document.getElementById(
+      "solicitudesContainer"
+    );
+    solicitudesContainer.innerHTML = "";
 
-    if (prestamos.length === 0) {
-      misPrestamosContainer.innerHTML = `<h3>No tienes préstamos en el momento</h3>`;
-      return; 
+    if (solicitudes.length === 0) {
+      solicitudesContainer.innerHTML = `<h3>No tienes solicitudes en el momento</h3>`;
+      return;
     }
 
-    for (const prestamo of prestamos) {
-      const propietarioData = await obtenerUser(prestamo.propietario);
-      const libroData = await obtenerLibro(prestamo.libro);
+    for (const solicitud of solicitudes) {
+      const solicitanteData = await obtenerUser(solicitud.solicitante);
+      const libroData = await obtenerLibro(solicitud.libro);
 
       const libroCard = document.createElement("div");
       libroCard.innerHTML = `
-        <h3>${libroData.titulo}</h3>
-        <img src="../img/libro.png" alt="">
-        <p><strong>Propietario</strong>: ${propietarioData.nombre}</p>
-        <p><strong>Fecha de solicitud:</strong> ${prestamo.fechaSolicitud.split("T")[0]}</p>
-        <p><strong>Estado</strong>: ${prestamo.estado}</p>
+          <h3>${libroData.titulo}</h3>
+          <img src="../img/libro.png" alt="">
+        <p><strong>Solicitante</strong>: ${solicitanteData.nombre}</p>
 
-      `;
-      misPrestamosContainer.appendChild(libroCard);
+          <p><strong>Fecha de solicitud:</strong> ${
+            solicitud.fechaSolicitud.split("T")[0]
+          }</p>
+          <p><strong>Estado</strong>: ${solicitud.estado}</p>
+  
+        `;
+      solicitudesContainer.appendChild(libroCard);
     }
   } catch (error) {
     console.error("Error al obtener los préstamos:", error);
   }
 }
-
 
 function obtenerUser(id) {
   return fetch(`${urlUsuarios}/${id}`)
@@ -64,7 +67,7 @@ function obtenerUser(id) {
     });
 }
 
-function obtenerLibro(id){
+function obtenerLibro(id) {
   return fetch(`${urlLibros}/${id}`)
     .then((response) => {
       if (!response.ok) {
@@ -81,4 +84,4 @@ function obtenerLibro(id){
     });
 }
 
-obtenerMisPrestamos();
+obtenerSolicitudes();

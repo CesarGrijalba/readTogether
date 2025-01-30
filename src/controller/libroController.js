@@ -12,6 +12,16 @@ export const obtenerLibros = async (req, res) => {
   }
 };
 
+export const obtenerLibro = async (req, res) => {
+  try {
+    const libroId = req.params.id
+    const libro = await Libro.findById(libroId);
+    res.status(200).json(libro);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
 export const obtenerLibrosUser = async (req, res) => {
   try {
     const userId = req.userId;

@@ -8,7 +8,7 @@ const prestamoSchema = new mongoose.Schema({
   fechaSolicitud: { type: Date, default: Date.now }, // Fecha de solicitud
   fechaAprobacion: { type: Date }, // Fecha de aprobación
   fechaDevolucion: { type: Date }, // Fecha de devolución
-  estado: { type: String, enum: ["pendiente", "aprobado", "rechazado", "devuelto"], default: "pendiente" }, // Estado del préstamo
+  estado: { type: String, enum: ["Pendiente", "Aprobado", "Rechazado", "Devuelto"], default: "Pendiente" }, // Estado del préstamo
 });
 
 const Prestamo = mongoose.model("Prestamo", prestamoSchema);
