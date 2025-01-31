@@ -1,6 +1,6 @@
-const url = "/libros/explorar";
-const urlUsuarios = "/usuarios";
-const urlPrestamos = "/prestamos";
+const url = "https://read-together-pi.vercel.app/libros/explorar";
+const urlUsuarios = "https://read-together-pi.vercel.app/usuarios";
+const urlPrestamos = "https://read-together-pi.vercel.app/prestamos";
 
 const token = localStorage.getItem("token");
 
