@@ -1,6 +1,6 @@
-const urlPrestamos = "http://localhost:3000/prestamos";
-const urlUsuarios = "http://localhost:3000/usuarios";
-const urlLibros = "http://localhost:3000/libros";
+const urlPrestamos = "https://read-together-pi.vercel.app/prestamos";
+const urlUsuarios = "https://read-together-pi.vercel.app/usuarios";
+const urlLibros = "https://read-together-pi.vercel.app/libros";
 
 
 const token = localStorage.getItem("token");
