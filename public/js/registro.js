@@ -1,4 +1,4 @@
-const url = "https://read-together-pi.vercel.app/usuarios/registro";
+const url = "https://read-together-sand.vercel.app/usuarios/registro";
 
 document
   .getElementById("registroForm")

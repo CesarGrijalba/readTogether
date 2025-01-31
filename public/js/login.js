@@ -1,4 +1,4 @@
-const url = "https://read-together-pi.vercel.app/usuarios/login";
+const url = "https://read-together-sand.vercel.app/usuarios/login";
 
 document.getElementById("loginForm").addEventListener("submit", async (e) => {
   e.preventDefault();

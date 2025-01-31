@@ -1,7 +1,7 @@
-const urlPrestamos = "https://read-together-pi.vercel.app/prestamos";
-const urlSolicitudes = "https://read-together-pi.vercel.app/prestamos/solicitudes";
-const urlUsuarios = "https://read-together-pi.vercel.app/usuarios";
-const urlLibros = "https://read-together-pi.vercel.app/libros";
+const urlPrestamos = "https://read-together-sand.vercel.app/prestamos";
+const urlSolicitudes = "https://read-together-sand.vercel.app/prestamos/solicitudes";
+const urlUsuarios = "https://read-together-sand.vercel.app/usuarios";
+const urlLibros = "https://read-together-sand.vercel.app/libros";
 
 const token = localStorage.getItem("token");
 
